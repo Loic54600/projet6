@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sophie Bluel - Architecte d'intérieur</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="./assets/style.css">
+		<script type="module" src="./assets/js/login.js"></script>
+	</head>
 <body>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -27,13 +28,19 @@
 	<section id="contact">
 		<h2>Log in</h2>
 		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
+			<!--titre + cadre entrée donnée-->
+			<label for="email">E-mail</label>
 			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
+			<div class="email_error"></div>
+
+			<!--titre + cadre entrée donnée-->
+			<label for="pwd">mot de passe</label>
+			<input type="pwd" name="pwd" id="pwd">
+			<div class="pwd_error"></div>
+			
+			<!--boutton se connecter-->
+			<input type="submit" id="submit" value="se connecter">
+
 		</form>
 	</section>
 </main>
