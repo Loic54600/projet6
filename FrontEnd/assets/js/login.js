@@ -23,7 +23,7 @@ function login(id) {
         p.innerHTML = "Email non valide";
         EmailError.appendChild(p);
         return;
-    }
+        }
 
     //Vérification des caractère et message error (pwd = Mot de passe)//
     if (id.pwd.length < 5 && !id.pwd.match(/^[a-zA-Z0-9]+$/g)) {
@@ -31,8 +31,15 @@ function login(id) {
         p.innerHTML = "Mot de passe non valide";
         PwdError.appendChild(p);
         return;
+        }
+        // Si couple email/mdp correct
+    else if (result.token) {
+        localStorage.setItem("token", result.token);
+        window.location.href = "index.html";
     }
-    }
+    
+ }
+
 //Connexion//
 // Permet au click d'envoyer les données Email, Pwd(mot de passe) //
 submit.addEventListener("click", () => {
