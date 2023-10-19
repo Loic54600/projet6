@@ -12,12 +12,9 @@ const form = document.querySelector('form')
 
 // Fonction de connexion
 function login(id) {
-
     EmailError.innerHTML = "";
     PwdError.innerHTML = "";
-
     let sendData = true;
-
     //Vérification des caractère et message error (Email)//
     if (id.email.length === 0) {
         const p = document.createElement("p");
@@ -25,7 +22,6 @@ function login(id) {
         EmailError.appendChild(p);
         sendData = false
     }
-
     //Vérification des caractère et message error (pwd = Mot de passe)//
     if (id.pwd.length === 0) {
         const p = document.createElement("p");
@@ -33,10 +29,8 @@ function login(id) {
         PwdError.appendChild(p);
         sendData = false
     }
-
-
     if(sendData) {
-        /*fetch('http://localhost:5678/api/users/login', {
+        fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -45,11 +39,25 @@ function login(id) {
         })
             .then(response => response.json())
             .then(result => {
-                /!* STOCKET TOKEN OU AVERTIR USER *!/
-            })*/
+                console.log(result);
+        
+        if (result.error || result.message) {
+            const p = document.createElement("p");
+            p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
+            PwdError.appendChild(p);
+
+        // Si le token est correct, il a connexion //
+        } else if (result.token) {
+            localStorage.setItem("token", result.token);
+            window.location.href = "index.html";
+        }
+    
+    })
+    // prevenir l'utilisateur en cas d'erreur
+    .catch(error => 
+        console.log(error));
     }
 }
-
 //Connexion//
 // Permet au click d'envoyer les données Email, Pwd(mot de passe) //
 submit.addEventListener("click", () => {
@@ -57,10 +65,24 @@ submit.addEventListener("click", () => {
         email: email.value,
         pwd: pwd.value
     };
-
     login(user);
-})
-
+    }
+)
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-})
+    }
+)
+
+const alredyLoggedError = document.querySelector(".error"); 
+//Si la personne est déjà connecter, on supprime le token //
+function alredyLogged() {
+    if (localStorage.getItem("token")) {
+        localStorage.removeItem("token");
+
+        const p = document.createElement("p");
+        //Message de reconnexion //
+        p.innerHTML = "Vous êtes connecté, veuillez vous reconnecter";
+        alredyLoggedError.appendChild(p);
+        return;
+    }
+}

@@ -10,13 +10,11 @@ async function getProjects() {
     const response = await fetch('http://localhost:5678/api/works');
     return await response.json();
 }
-
-////
+//fonvtion affiche les données de la gallery //
 function afficherGalerie(projects, idFiltre) {
     if (idFiltre !== null) {
         projects = projects.filter(projects => projects.categoryId === idFiltre);
     }
-
 //placement dans la div gallery //
     sectiongallery.innerHTML = '';
 
@@ -41,6 +39,14 @@ function afficherGalerie(projects, idFiltre) {
     );
 }
 
+//fonction changement de couleur des boutons //
+function filterbtonActive(filtre) {
+    //Supprime la classe du filtre actuel
+    const filtreActuel = document.querySelector('.filter_btn-active');
+    filtreActuel.classList.remove('filter_btn-active')
+    //Active la classe pour changmennt de couleur //
+    filtre.classList.add('filter_btn-active');
+}
 changeId();
 
 //Change l'affichage au moment du click par rapport a l'id//
@@ -52,32 +58,25 @@ function changeId() {
         btnId0.addEventListener('click', () => {
             //affiche toutes les id //
             afficherGalerie(projects, null);
-            manageFilter(btnId0);
+            //active la classe ('filter_btn-active')//
+            filterbtonActive(btnId0);
         });
         //bouton btnId1 = "Objets" // click fonction affiche les images de la galerie sous id "1" //
         btnId1.addEventListener('click', () => {
             // affiche toutes les id 1 //
             afficherGalerie(projects, 1);
-            manageFilter(btnId1);
+            filterbtonActive(btnId1);
         });
         //bouton btnId2 = "Appartements"//
         btnId2.addEventListener('click', () => {
             afficherGalerie(projects, 2);
-            manageFilter(btnId2);
+            filterbtonActive(btnId2);
         })
         //bouton btnId3 = "Hotels et restaurants"//
         btnId3.addEventListener('click', () => {
             afficherGalerie(projects, 3);
-            manageFilter(btnId3);
+            filterbtonActive(btnId3);
         })
     })
 }
 
-function manageFilter(filtre) {
-    // Supprime la classe du filtre actuel
-    const filtreActuel = document.querySelector('.filter_btn-active');
-    filtreActuel.classList.remove('filter_btn-active')
-
-    // Active le filtre cliqué
-    filtre.classList.add('filter_btn-active');
-}
