@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -40,12 +41,36 @@
 			<button class="filter_btn filter_btn-id-2">Appartements</button>
 			<button class="filter_btn filter_btn-id-3">Hôtels & restaurants</button>
 		</div>
-	<section id="portfolio">
-		<h2>Mes Projets</h2>
+	<section id="portfolio" class="portfolio">
+		<h2>Mes Projets<button class="btn-modal" id="btn-modal"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button></h2>
+		
 		<div class="gallery">
 			<!--Futur gallery-->
 		</div>
 	</section>
+
+	<!--modal-->
+	<div class="overlay" id="overlay">
+		<div class="modal" id="modal">
+			<div class="modale_header">
+				<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left"></i></a>
+				<a href="index.html" class="icone_close"><i class="fa-solid fa-xmark"></i></a>
+			</div>
+			<section id="#" class="modal_section">
+				<h2 class="modal-h2">Galerie photo</h2>
+				<section>
+					<div class="gallery-modal">
+						<!--Futur gallery-->
+						123
+					</div>
+				</section>
+				<div class="borderline"></div>
+				<button class="filter_btn-modal">Ajouter une photo</button>
+			</section>
+		</div>
+	</div>	
+	<!--fin modal-->
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -71,4 +96,5 @@
 </body>
 
 <script type="text/javascript" src="./assets/js/script.js"></script>
+<script type="text/javascript" src="./assets/js/modal.js"></script>
 </html>

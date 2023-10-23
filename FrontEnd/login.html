@@ -26,7 +26,8 @@
 <main>
 	<section id="contact">
 		<h2>Log in</h2>
-		<form action="#" method="post">
+		<div class="error"></div>
+		<form action="#" method="post" >
 			<!--titre + cadre entrée donnée-->
 			<label for="email">E-mail</label>
 			<input type="email" name="email" id="email">
@@ -39,6 +40,9 @@
 			
 			<!--boutton se connecter-->
 			<input type="submit" id="submit" value="se connecter">
+
+			<a href="#" class="form">Mot de passe oublié</a>
+
 		</form>
 	</section>
 </main>
@@ -50,5 +54,6 @@
 	</nav>
 </footer>
 </body>
-	<script type="text/javascript" src="./assets/js/login.js"></script>
+<script type="module" src="./assets/js/script.js"></script>
+<script type="module" src="./assets/js/modal.js"></script>
 </html>

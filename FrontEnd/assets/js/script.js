@@ -10,8 +10,8 @@ async function getProjects() {
     const response = await fetch('http://localhost:5678/api/works');
     return await response.json();
 }
-//fonvtion affiche les données de la gallery //
-function afficherGalerie(projects, idFiltre) {
+//fonction affiche les données de la gallery //
+function affichagegallery(projects, idFiltre) {
     if (idFiltre !== null) {
         projects = projects.filter(projects => projects.categoryId === idFiltre);
     }
@@ -25,6 +25,7 @@ function afficherGalerie(projects, idFiltre) {
             //Récupération de l'image //
             const image = document.createElement('img');
             image.src = project.imageUrl;
+            //descriptif de l'image//
             image.setAttribute('alt', project.title);
             projectContainer.appendChild(image);
 
@@ -47,36 +48,38 @@ function filterbtonActive(filtre) {
     //Active la classe pour changmennt de couleur //
     filtre.classList.add('filter_btn-active');
 }
+
 changeId();
 
 //Change l'affichage au moment du click par rapport a l'id//
 function changeId() {
 
     getProjects().then((projects) => {
-        afficherGalerie(projects, null);
+        affichagegallery(projects, null);
         //bouton btnId0 = "Tous" // click fonction affiche toute la galerie //
         btnId0.addEventListener('click', () => {
             //affiche toutes les id //
-            afficherGalerie(projects, null);
+            affichagegallery(projects, null);
             //active la classe ('filter_btn-active')//
             filterbtonActive(btnId0);
         });
         //bouton btnId1 = "Objets" // click fonction affiche les images de la galerie sous id "1" //
         btnId1.addEventListener('click', () => {
             // affiche toutes les id 1 //
-            afficherGalerie(projects, 1);
+            affichagegallery(projects, 1);
             filterbtonActive(btnId1);
         });
         //bouton btnId2 = "Appartements"//
         btnId2.addEventListener('click', () => {
-            afficherGalerie(projects, 2);
+            affichagegallery(projects, 2);
             filterbtonActive(btnId2);
         })
         //bouton btnId3 = "Hotels et restaurants"//
         btnId3.addEventListener('click', () => {
-            afficherGalerie(projects, 3);
+            affichagegallery(projects, 3);
             filterbtonActive(btnId3);
         })
     })
 }
+
 
