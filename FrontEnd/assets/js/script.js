@@ -55,23 +55,23 @@ changeId();
 function changeId() {
 
     getProjects().then((projects) => {
-        affichagegallery(projects, null);
+        affichagegallery(projects, null, sectiongallery);
         //bouton btnId0 = "Tous" // click fonction affiche toute la galerie //
         btnId0.addEventListener('click', () => {
             //affiche toutes les id //
-            affichagegallery(projects, null);
+            affichagegallery(projects, null, sectiongallery);
             //active la classe ('filter_btn-active')//
             filterbtonActive(btnId0);
         });
         //bouton btnId1 = "Objets" // click fonction affiche les images de la galerie sous id "1" //
         btnId1.addEventListener('click', () => {
             // affiche toutes les id 1 //
-            affichagegallery(projects, 1);
+            affichagegallery(projects, 1, sectiongallery);
             filterbtonActive(btnId1);
         });
         //bouton btnId2 = "Appartements"//
         btnId2.addEventListener('click', () => {
-            affichagegallery(projects, 2);
+            affichagegallery(projects, 2, sectiongallery);
             filterbtonActive(btnId2);
         })
         //bouton btnId3 = "Hotels et restaurants"//
