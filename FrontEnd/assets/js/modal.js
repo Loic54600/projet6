@@ -1,18 +1,19 @@
 //Variable récupération du token + class//
-const token = localStorage.getItem("token");
-const deconnexion = document.querySelector(".co-deco");
+const Token = localStorage.getItem("token");
+const Codeco = document.querySelector(".codeco");
 
 //Fonction changement de connexion en déconnexion//
 adminDeco()
 
 function adminDeco() {
     document.querySelectorAll(".deconnexion").forEach(a => {
-        if (token === null) {
+        if (Token === null) {
             return;
         }
         else {
+          a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
-            deconnexion.innerHTML = "Logout";
+            Codeco.innerHTML = "deconnexion";
         }
     });
 }

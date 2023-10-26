@@ -91,5 +91,3 @@ function deleteToken() {
         Supprtokken.appendChild(p);
     }
 }
-
-deleteToken();

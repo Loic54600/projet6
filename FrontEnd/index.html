@@ -12,13 +12,15 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+
+
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<a href="index.html"><li>Projets</li></a>
 			<li><a class="nav__a" href="mailto:123@ohmyfood.com">Contact</a></li>
-			<a href="login.html"><li class="co-deco">Login</li>
+			<a href="login.html"><li class="codeco">Login</li>
 			<a class="deconnexion"></a>
 			</a>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -39,18 +41,57 @@
 	</section>
 	<!--section portfolio + modifier "adim"-->
 	<section id="portfolio" class="portfolio">
-		<h2>Mes Projets</h2>
-			<button class="btn-modal" id="btn-modal" style="display: none;"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
-			<div class="filters">
+		<h2>Mes Projets
+			<button class="btn-modal" id="btn-modal" aria-hidden="false" style="display: none;"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
+		</h2>
+		<div class="filters">
 			<button class="filter_btn filter_btn-id-0 filter_btn-active">Tous</button>
 			<button class="filter_btn filter_btn-id-1">Objets</button>
 			<button class="filter_btn filter_btn-id-2">Appartements</button>
 			<button class="filter_btn filter_btn-id-3">Hôtels & restaurants</button>
-		</div>
+	</div>
 		<div class="gallery">
 			<!--Futur gallery-->
 		</div>
 	</section>
+	<!--Modal-->
+	<div class="overlay" id="overlay">
+		<div class="modal" id="modal">
+			<div class="modale_header">
+				<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
+				<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
+			</div>
+			<section id="#" class="modal_section">
+				<h2 class="modal-h2">Galerie photo</h2>
+				<section>
+					<div class="gallery-modal">
+						<!--Futur gallery-->
+						123
+					</div>
+				</section>
+				<div class="borderline"></div>
+				<button class="filter_btn-modal">Ajouter une photo</button>
+			</section>
+		</div>
+	</div>	
+	<!--Fin modal-->
+	
+	<!--Modal "Ajouter une photo"-->
+	<div class="overlay" id="overlay">
+		<div class="modalajoutphoto" id="modalajoutphoto">
+			<div class="modale_header">
+				<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
+				<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
+			</div>
+			<section id="#" class="modal_section">
+				<h2 class="modal-h2">Ajout photo</h2>
+				<div class="borderline"></div>
+				<button class="filter_btn-modal">Ajouter une photo</button>
+			</section>
+		</div>
+	</div>	
+	<!--Fin modal-->
+
 	<!--Section contact-->
 	<section id="contact">
 		<h2>Contact</h2>
@@ -74,49 +115,8 @@
 		</ul>
 	</nav>
 </footer>
-
-<!--Modal-->
-<div class="overlay" id="overlay">
-	<div class="modal" id="modal">
-		<div class="modale_header">
-			<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
-			<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
-		</div>
-		<section id="#" class="modal_section">
-			<h2 class="modal-h2">Galerie photo</h2>
-			<section>
-				<div class="gallery-modal">
-					<!--Futur gallery-->
-					123
-				</div>
-			</section>
-			<div class="borderline"></div>
-			<button class="filter_btn-modal">Ajouter une photo</button>
-		</section>
-	</div>
-</div>	
-<!--Fin modal-->
-
-<!--Modal "Ajouter une photo"-->
-<div class="overlay" id="overlay">
-	<div class="modalajoutphoto" id="modalajoutphoto">
-		<div class="modale_header">
-			<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
-			<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
-		</div>
-		<section id="#" class="modal_section">
-			<h2 class="modal-h2">Ajout photo</h2>
-			<div class="borderline"></div>
-			<button class="filter_btn-modal">Ajouter une photo</button>
-		</section>
-	</div>
-</div>	
-<!--Fin modal-->
-
 </body>
 <!--Script javascript-->
 <script type="text/javascript" src="./assets/js/script.js"></script>
 <script type="text/javascript" src="./assets/js/modal.js"></script>
 </html>
-
-
