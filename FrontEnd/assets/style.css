@@ -198,7 +198,6 @@ a {
 	left: 0; 
 	right: 0
 }
-
 .filter_btn {
 	font-family: "Syne";
 	padding: 10px 20px;
@@ -212,7 +211,6 @@ a {
 	cursor: pointer;
 	transition: all 0.5s ease;
 }
-
 .filter_btn-active {
 	color: white;
 	background-color: #1D6154;
@@ -220,7 +218,7 @@ a {
 .filters {
 	display: flex;
 	justify-content: center;
-
+	margin: 30px;
 }
 /*Partie login => mdp oublié*/
 .form {
@@ -232,16 +230,18 @@ a {
 	color: red;
 }
 /*bouton btn-modal*/
+.portfolio {
+	display: flex;
+	flex-direction: column;
+}
 .btn-modal {
 	padding: 10px 20px;
 	margin: 0 15px;
 	background-color: white;
-
 }
 .btn-modal:hover {
 	color: red;
 }
-
 /*Bouton Modal*/
 .icone {
 	padding-right: 5px;
@@ -268,7 +268,6 @@ button {
 }
 
 /*Modal*/
-
 .modal {
 	display: flex;
 	justify-content: center;
