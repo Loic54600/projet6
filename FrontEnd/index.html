@@ -89,12 +89,20 @@
 				<label for="photo">+ Ajouter une photo</label>
 				<input type="file" name="photo" id="photo" >
 			</div>
+			<div class="form-title-category">
+				<div class="form-title">
+					<label for="titre" class="title-form">Titre</label>
+					<input class="input-title" type="text" name="titre" id="titre">
+				</div>
 
-			<div class="formajoutphoto">
-					<label for="name" class="labeltitle">Titre</label>
-					<input type="text" name="name" id="name">
-					<label for="categorie" class="labeltitlecategorie" >Catégorie</label>
-					<textarea name="categorie" id="categorie" cols="30" rows="10"></textarea>
+				<div class="form-id">
+					<label for="categorie" class="title-form">Catégorie</label>
+					<select name="categorie" id="categorie" class="category">
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hôtels & restaurants</option>
+					</select>
+				</div>
 			</div>
 
 			<div class="borderline"></div>
@@ -105,27 +113,6 @@
 	</div>	
 	<!--Fin modal-->
 
-	<!--Modal "ajout photo"-->	
-	<div class="overlay" id="overlay">
-		<div class="modal" id="modal">
-			<div class="modale_header">
-				<div class="left"><a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left"></i></a></div>
-				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
-			</div>
-			<h2 class="h2-modal">Ajout photo</h2>
-			<form action="#" method="post">
-				<label for="name">Titre</label>
-				<input type="text" name="name" id="name">
-				<label for="message">Catégorie</label>
-				<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			</form>
-			<div class="borderline"></div>
-			<div class="buttonposition">
-				<button class="buttonphoto">Valider</button>
-			</div>	
-		</div>
-	</div>	
-	<!--Fin modal-->
 
 	<!--Section contact-->
 	<section id="contact">

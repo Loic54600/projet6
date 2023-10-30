@@ -65,7 +65,7 @@ function affichagegallerymodal(projectsmodal) {
 sectiongallerymodal.innerHTML = '';
 
 projectsmodal.forEach((project) => {
-            //Récupération des projets //$
+            //Récupération des projets //
             const projectContainermodal = document.createElement('figure');
 
             //Récupération de l'image //
@@ -74,6 +74,8 @@ projectsmodal.forEach((project) => {
             //descriptif de l'image//
             image.setAttribute('alt', project.title);
             projectContainermodal.appendChild(image);
+
+            
 
             //Renvoie les données dans la gallery//
             sectiongallerymodal.appendChild(projectContainermodal)
@@ -88,6 +90,16 @@ function modalaffiche() {
         affichagegallerymodal(projectsmodal, null, sectiongallerymodal);     
     })
 }
+//Function supprime une image//
+
+
+
+
+
+
+
+
+
 
 //Modal-photo//
 //Permet au click du bouton d'appeller la modal-photo //
