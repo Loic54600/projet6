@@ -75,7 +75,9 @@ projectsmodal.forEach((project) => {
             image.setAttribute('alt', project.title);
             projectContainermodal.appendChild(image);
 
-            
+           // const icon = document.createElement("");
+           // icon.classList.add("fa-solid", "fa-trash-can"); 
+           // p.appendChild(icon);
 
             //Renvoie les données dans la gallery//
             sectiongallerymodal.appendChild(projectContainermodal)
@@ -94,13 +96,6 @@ function modalaffiche() {
 
 
 
-
-
-
-
-
-
-
 //Modal-photo//
 //Permet au click du bouton d'appeller la modal-photo //
 document.getElementById('btn-edition').addEventListener('click', function() {
@@ -110,6 +105,10 @@ document.getElementById('btn-edition').addEventListener('click', function() {
 
 
 
+//fonction ajouter un projet//
+const title = document.querySelector(".input-title").value;
+const categoryId = document.querySelector(".categorie").value;
+const image = document.querySelector(".photo").files[0];
 
 
 
