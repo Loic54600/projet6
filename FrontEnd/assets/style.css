@@ -188,6 +188,20 @@ footer nav ul {
 }
 
 /*code rajoute*/
+.edition {
+	display: flex;
+	justify-content: center;
+	background-color: black;
+	width: 100%;
+	height: 30px;
+}
+.btn-edition {
+	background-color: black;
+	color: white;
+}
+.btn-edition:hover {
+	color: red;
+}
 a {
 	text-decoration: none;
 	color: black;
@@ -242,34 +256,18 @@ a {
 .btn-modal:hover {
 	color: red;
 }
-/*Bouton Modal*/
+/*Bouton Modal "Modifier"*/
 .icone {
-	padding-right: 5px;
-	font-size: 15px;
+	font-size: 20px;
+	padding-right: 10px;
 }
 button {
-	margin: 0;
 	border: none;
-	border-radius: 0;
-	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	cursor: pointer;
-	position: relative;
 } 
-.btn {
-	font-size: 14px;
-	line-height: 1.4;
-	padding: 13px 20px;
-	border-radius: 4px;
-	transition: box-shadow 0.1s, top 0.1s;
-	background: #fff;
-}
 
 /*Modal*/
 .modal {
-	display: flex;
 	justify-content: center;
 	pointer-events: none;
 	opacity: 0;
@@ -278,26 +276,52 @@ button {
 	top: 10px;
 	left: 0;
 	right: 0;
-	max-width: 500px;
-	height: 600px;
+	width: 500px;
+	height: 75%;
 	margin: 0 auto;
 	padding: 30px;
 	background: white;
 	border-radius: 50px;
-	box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 .modal_section {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	
+	align-items: center;	
+}
+.h2-modal {
+	display: flex;
+	margin-bottom: 30px;
+	justify-content: center;
+}
+.modale_header {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin: 20px;
 }
 .modal-close-btn {
 	position: absolute;
 	right: 10px;
 	top: 10px;
 	font-size: 20px;
+}
+.buttonposition {
+	display: flex;
+	justify-content: center;
+}
+.buttonphoto {
+	font-family:"Syne";
+	padding: 10px 20px;
+	margin: 0 15px;
+	border: 1px solid #1D6154;
+	border-radius: 25px;
+	background-color: #1D6154;
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.5s ease;
 }
 /** Overlay */
 .overlay {
@@ -331,28 +355,113 @@ button {
 	cursor: pointer;
 	transition: all 0.5s ease;
 }
-
 /*gestion gallery modal*/
-.modal-h2 {
-	color: black;
-}
-.gallerymodal {
+.gallery-modal {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
-.gallerymodal img {
+.gallery-modal img {
 	width: 50%;
+	cursor: pointer;
 }
-
 .borderline::after {
 	display: flex;
 	content: " ";
-	border-top: 3px solid red;
+	border-top: 3px solid grey;
 	height: 1px;
-	width: 90%;
-	margin: 40px auto;
+	width: 75%;
+	margin: 15px auto;
+}
+
+/*modal "ajouter une photo"*/
+.formajoutphoto {
+	display: flex;
+	flex-direction: column;
+}
+.labeltitle {
+	font-family: "Syne";
+	margin-top: 50px;
+	margin-bottom: 5px;	
+}
+.labeltitlecategorie {
+	font-family: "Syne";
+	margin-top: 20px;
+	margin-bottom: 10px;	
+}
+.formphoto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #E8F1F7;
+	width: 500px;
+	height: 200px;
+	border-radius: 10px;
+} 
+.formphoto i {
+	color: grey;
+	font-size: 90px;
+	font-weight: 100;
+	margin: 20px;
+	margin-top: -25px;
+}
+.formphoto label {
+	font-family: "work sans";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 40px;
+	background-color: #CBD6DC;
+	color: #306685;
+	border-radius: 50px;
+	cursor: pointer;
+	margin-top: -10px;
+}
+.formphoto::after {
+	margin-top: 10px;
+	content: "jpg, png : 4mo max";
+	position: absolute;
+	top: 300px;
+}
+.formphoto input {
+	display: none;
+}
+.overlayphoto {
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+}
+/*JS*/
+.visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+.buttonvalider {
+	font-family:"Syne";
+	padding: 10px 20px;
+	margin: 0 15px;
+	border-radius: 25px;
+	background-color: grey;
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	width: 50%;
+}
+.buttonvalider-active {
+	color: white;
+	background-color: #1D6154;
 }

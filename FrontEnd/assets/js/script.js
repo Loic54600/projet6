@@ -5,6 +5,7 @@ const btnId3 = document.querySelector(".filter_btn-id-3");
 
 const sectiongallery = document.querySelector(".gallery");
 
+
 //fonction de recherche de document//
 async function getProjects() {
     const response = await fetch('http://localhost:5678/api/works');
@@ -19,7 +20,7 @@ function affichagegallery(projects, idFiltre) {
     sectiongallery.innerHTML = '';
 
     projects.forEach((project) => {
-            //Récupération des projets //
+            //Récupération des projets //$
             const projectContainer = document.createElement('figure');
 
             //Récupération de l'image //

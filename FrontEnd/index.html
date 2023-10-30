@@ -12,9 +12,11 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-
-
+<div class="edition" style="display: none;">
+		<button class="btn-edition" id="btn-edition"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
+	</div>
 <header>
+	
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
@@ -58,36 +60,69 @@
 	<div class="overlay" id="overlay">
 		<div class="modal" id="modal">
 			<div class="modale_header">
-				<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
-				<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
+				<a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
+				<a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a>
 			</div>
-			<section id="#" class="modal_section">
-				<h2 class="modal-h2">Galerie photo</h2>
-				<section>
-					<div class="gallery-modal">
-						<!--Futur gallery-->
-						123
-					</div>
-				</section>
-				<div class="borderline"></div>
-				<button class="filter_btn-modal">Ajouter une photo</button>
-			</section>
+			<h2 class="h2-modal">Galerie photo</h2>
+			<div class="gallery-modal">
+				<!--Futur gallery-->
+			</div>
+			<div class="borderline"></div>
+			<div class="buttonposition">
+				<button class="buttonphoto">Ajouter une photo</button>
+			</div>	
+		</div>
+	</div> 
+	<!--Fin modal-->
+
+	<!--Modal "ajout photo"-->	
+	<div class="overlayphoto" id="overlayphoto">
+		<div class="modal" id="modalphoto">
+			<div class="modale_header">
+				<div class="left"><a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left"></i></a></div>
+				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
+			</div>
+			<h2 class="h2-modal">Ajout photo</h2>
+
+			<div class="formphoto">
+				<i class="fa-regular fa-image"></i>
+				<label for="photo">+ Ajouter une photo</label>
+				<input type="file" name="photo" id="photo" >
+			</div>
+
+			<div class="formajoutphoto">
+					<label for="name" class="labeltitle">Titre</label>
+					<input type="text" name="name" id="name">
+					<label for="categorie" class="labeltitlecategorie" >Catégorie</label>
+					<textarea name="categorie" id="categorie" cols="30" rows="10"></textarea>
+			</div>
+
+			<div class="borderline"></div>
+			<div class="buttonposition">
+				<button class="buttonvalider">Valider</button>
+			</div>	
 		</div>
 	</div>	
 	<!--Fin modal-->
-	
-	<!--Modal "Ajouter une photo"-->
+
+	<!--Modal "ajout photo"-->	
 	<div class="overlay" id="overlay">
-		<div class="modalajoutphoto" id="modalajoutphoto">
+		<div class="modal" id="modal">
 			<div class="modale_header">
-				<a href="index.html" class="icone_left"><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
-				<a href="index.html"><i class="fa-solid fa-xmark icone"></i></a>
+				<div class="left"><a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left"></i></a></div>
+				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
 			</div>
-			<section id="#" class="modal_section">
-				<h2 class="modal-h2">Ajout photo</h2>
-				<div class="borderline"></div>
-				<button class="filter_btn-modal">Ajouter une photo</button>
-			</section>
+			<h2 class="h2-modal">Ajout photo</h2>
+			<form action="#" method="post">
+				<label for="name">Titre</label>
+				<input type="text" name="name" id="name">
+				<label for="message">Catégorie</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			</form>
+			<div class="borderline"></div>
+			<div class="buttonposition">
+				<button class="buttonphoto">Valider</button>
+			</div>	
 		</div>
 	</div>	
 	<!--Fin modal-->
