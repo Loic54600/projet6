@@ -75,14 +75,16 @@ projectsmodal.forEach((project) => {
             image.setAttribute('alt', project.title);
             projectContainermodal.appendChild(image);
 
-           // const icon = document.createElement("");
-           // icon.classList.add("fa-solid", "fa-trash-can"); 
-           // p.appendChild(icon);
+            const icon = document.createElement("spawn");
+            icon.classList.add("fa-solid", "fa-trash-can"); 
+            projectContainermodal.appendChild(icon);
 
             //Renvoie les données dans la gallery//
             sectiongallerymodal.appendChild(projectContainermodal)
         }
+        
     );
+
 }
 modalaffiche();
 //function affiche la gallery dans la modal//
@@ -96,20 +98,77 @@ function modalaffiche() {
 
 
 
-//Modal-photo//
+
+
+
 //Permet au click du bouton d'appeller la modal-photo //
 document.getElementById('btn-edition').addEventListener('click', function() {
     document.getElementById('overlayphoto').classList.add('visible');
     document.getElementById('modalphoto').classList.add('visible');
 });
 
+//Function ajouter une photo//
+const buttonvalider = document.querySelector(".buttonvalider");
+buttonvalider.addEventListener("click", ajouterimage);
 
+async function ajouterimage(event) {
+    event.preventDefault(); 
 
-//fonction ajouter un projet//
-const title = document.querySelector(".input-title").value;
-const categoryId = document.querySelector(".categorie").value;
-const image = document.querySelector(".photo").files[0];
+    const image = document.querySelector(".photo").files[0];
+    const title = document.querySelector(".input-title").value;
+    const categoryId = document.querySelector(".categorie").value;
+    //si aucune information "alert" de remplissage des champs//
+    if (title === "" || categoryId === "" || image === undefined) {
+        alert("Remplissez tous les champs");
+        return;
+    } 
+    //Sinon si aucune catégorie choissie "alert" remplissage de catégorie//
+    else if (categoryId !== "1" && categoryId !== "2" && categoryId !== "3") {
+        alert("Choisissez une catégorie valide");
+        return;
+        } 
+    else {
+        
+    try {
+        //variable creation du formulaire image//
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("category", categoryId);
+        formData.append("image", image);
+        //Envoie les données du formulaire dans le local//
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+        });
+        //Si le formulaire est correct ajout du projet//
+        if (response.status === 201) {
+            alert("Projet ajouté avec succés");
+            modaleProjets(dataAdmin);
+            backToModale(event);
+            generationProjets(data, null);
+            
+        } 
+        //Sinon si la reponse est 400 "console" remplir tous les chants informations//
+        else if (response.status === 400) {
+            alert("Merci de remplir les données demandées");
+        } 
+        //sinon si la reponse est 500 "console" affiche erreur//
+        else if (response.status === 500) {
+            alert("Erreur");
+        } 
+        //sinon si la reponse est 401 aucune autorisation d'ajouter un projet//
+        else if (response.status === 401) {
+            alert("Vous n'avez pas l'autorisation d'ajouter un projet");
+            //retour a la page d'acceuil//
+            window.location.href = "login.html";
+    }}
 
+    catch (error) {
+        console.log(error);
+}}}
 
 
 
