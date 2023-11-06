@@ -364,12 +364,20 @@ button {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	grid-template: px / auto auto auto auto;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 	margin-bottom: 40px;
 }
 .fa-trash-can {
+	width: 30px;
+	height: 30px;
 	cursor: pointer;
+	background-color: black;
+	color: white;
+}
+.fa-trash-alt:before, .fa-trash-can:before {
+    margin-top: 8px;
 }
 .gallery-modal img {
 	width: 50%;
@@ -386,8 +394,13 @@ button {
 .fa-trash-can {
 	font-size: 15px;
 	display: flex;
-	justify-content: center;
-	
+	justify-content: center;	
+}
+img-modal {
+	display: flex;
+}
+img-modal:hover {
+	border:2px solid #1D6154;
 }
 /*modal "ajouter une photo"*/
 .overlayphoto {

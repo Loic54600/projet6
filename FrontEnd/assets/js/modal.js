@@ -66,7 +66,7 @@ sectiongallerymodal.innerHTML = '';
 
 projectsmodal.forEach((project) => {
             //Récupération des projets //
-            const projectContainermodal = document.createElement('figure');
+            const projectContainermodal = document.createElement('img-modal');
 
             //Récupération de l'image //
             const image = document.createElement('img');
@@ -94,12 +94,6 @@ function modalaffiche() {
         affichagegallerymodal(projectsmodal, null, sectiongallerymodal);     
     })
 }
-//Function supprime une image//
-
-
-
-
-
 
 //Permet au click du bouton d'appeller la modal-photo //
 document.getElementById('btn-edition').addEventListener('click', function() {
@@ -129,53 +123,47 @@ async function ajouterimage(event) {
         } 
     else {
         
-    try {
-        //variable creation du formulaire image//
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("category", categoryId);
-        formData.append("image", image);
-        //Envoie les données du formulaire dans le local//
-        const response = await fetch("http://localhost:5678/api/works", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-            body: formData,
-        });
-        //Si le formulaire est correct ajout du projet//
-        if (response.status === 201) {
-            alert("Projet ajouté avec succés");
-            modaleProjets(dataAdmin);
-            backToModale(event);
-            generationProjets(data, null);
-            
-        } 
-        //Sinon si la reponse est 400 "console" remplir tous les chants informations//
-        else if (response.status === 400) {
-            alert("Merci de remplir les données demandées");
-        } 
-        //sinon si la reponse est 500 "console" affiche erreur//
-        else if (response.status === 500) {
-            alert("Erreur");
-        } 
-        //sinon si la reponse est 401 aucune autorisation d'ajouter un projet//
-        else if (response.status === 401) {
-            alert("Vous n'avez pas l'autorisation d'ajouter un projet");
-            //retour a la page d'acceuil//
-            window.location.href = "login.html";
-    }}
-
+        try {
+            //variable creation du formulaire image//
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("category", categoryId);
+            formData.append("image", image);
+            //Envoie les données du formulaire dans le local//
+            const response = await fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: formData,
+            });
+            //Si le formulaire est correct ajout du projet//
+            if (response.status === 201) {
+                alert("Projet ajouté avec succés");
+                modaleProjets(dataAdmin);
+                backToModale(event);
+                generationProjets(data, null);
+                
+            }      
+    }
     catch (error) {
         console.log(error);
-}}}
+    }}
+}
 
+//fonction supprimer une image//
+function supprimg() {
 
-
-
-
-
+    document.addEventListener('click', (event) => {
+      if (event.target.matches('.fa-trash-can')) {
+        console.log('event.target', event.target.parentElement);
+        let target = event.target;
+        target.parentElement.parentNode.removeChild(target.parentElement)
+       }
+    })
+  }
+  supprimg()
   
-    
-      
-    
+
+     
+ 

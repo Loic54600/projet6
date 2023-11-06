@@ -49,7 +49,8 @@ function login(id) {
                     p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
                     PwdError.appendChild(p);
                     //Si le token est correct, il a connexion //
-                } else if (result.token) {
+                } 
+                else if (result.token) {
                     localStorage.setItem("token", result.token);
                     // retour a la page index si connexion //
                     window.location.href = "index.html";
