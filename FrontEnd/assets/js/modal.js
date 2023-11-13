@@ -11,6 +11,7 @@ function adminDeco() {
             return;
         }
         else {
+        //change le texte//
           a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
             Codeco.innerHTML = "deconnexion";
@@ -26,6 +27,7 @@ function modifier() {
           return;
       }
       else {
+        //enleve le style display none//
           a.removeAttribute("style");
       }
   });
@@ -66,7 +68,7 @@ sectiongallerymodal.innerHTML = '';
 
 projectsmodal.forEach((project) => {
             //Récupération des projets //
-            const projectContainermodal = document.createElement('img-modal');
+            const projectContainermodal = document.createElement('figure');
 
             //Récupération de l'image //
             const image = document.createElement('img');
@@ -80,26 +82,19 @@ projectsmodal.forEach((project) => {
             projectContainermodal.appendChild(icon);
 
             //Renvoie les données dans la gallery//
-            sectiongallerymodal.appendChild(projectContainermodal)
-        }
-        
+            sectiongallerymodal.appendChild(projectContainermodal);
+        }  
     );
-
+    supprimg()
 }
 modalaffiche();
-//function affiche la gallery dans la modal//
+//fonction affiche la gallery dans la modal//
 function modalaffiche() {
 
     getProjects().then((projectsmodal) => {
         affichagegallerymodal(projectsmodal, null, sectiongallerymodal);     
     })
 }
-
-//Permet au click du bouton d'appeller la modal-photo //
-document.getElementById('btn-edition').addEventListener('click', function() {
-    document.getElementById('overlayphoto').classList.add('visible');
-    document.getElementById('modalphoto').classList.add('visible');
-});
 
 //Function ajouter une photo//
 const buttonvalider = document.querySelector(".buttonvalider");
@@ -151,19 +146,39 @@ async function ajouterimage(event) {
     }}
 }
 
-//fonction supprimer une image//
+//Permet au click du bouton d'appeller la modal-photo //
+document.getElementById('btn-edition').addEventListener('click', function() {
+    document.getElementById('overlayphoto').classList.add('visible');
+    document.getElementById('modalphoto').classList.add('visible');
+});
+
+
+//Fonction supprimer image//
 function supprimg() {
+    const btnSuppr = document.querySelectorAll(".fa-trash-can"); {
+        btnSuppr[i].addEventListener("click", deleteimg);
+    }}
 
-    document.addEventListener('click', (event) => {
-      if (event.target.matches('.fa-trash-can')) {
-        console.log('event.target', event.target.parentElement);
-        let target = event.target;
-        target.parentElement.parentNode.removeChild(target.parentElement)
-       }
+//Supprimer le projet//
+async function deleteimg() {
+
+    await fetch(`http://localhost:5678/api/works/${this.classList[0]}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: formData,
+            })   
+    .then (response => {
+        console.log(response)
+        if (response.status === 204) {
+            console.log("Image supprimé " + this.classList[0])
+            
+        }
     })
-  }
-  supprimg()
-  
+    .catch (error => {
+        console.log(error)
+    })
+}
 
-     
- 
+////

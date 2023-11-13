@@ -21,7 +21,7 @@ function affichagegallery(projects, idFiltre) {
 
     projects.forEach((project) => {
             //Récupération des projets //$
-            const projectContainer = document.createElement('figure');
+            const projectContainer = document.createElement('div');
 
             //Récupération de l'image //
             const image = document.createElement('img');

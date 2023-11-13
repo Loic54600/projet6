@@ -135,7 +135,7 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	max-height: 450px;
 }
 
 #contact {
@@ -186,7 +186,9 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-
+.image-sophie {
+	width: 50%;
+}
 /*code rajoute*/
 .edition {
 	display: flex;
@@ -265,7 +267,6 @@ button {
 	border: none;
 	cursor: pointer;
 } 
-
 /*Modal*/
 .modal {
 	justify-content: center;
@@ -276,12 +277,12 @@ button {
 	top: 10px;
 	left: 0;
 	right: 0;
-	width: 500px;
-	height: 75%;
+	width: 30%;
+	height: 80%;
 	margin: 0 auto;
 	padding: 30px;
 	background: white;
-	border-radius: 50px;
+	border-radius: 20px;
 }
 .modal_section {
 	width: 100%;
@@ -342,6 +343,7 @@ button {
 .visible {
 	opacity: 1;
 	pointer-events: auto;
+	overflow: auto;
 }
 .filter_btn-modal {
 	font-family: "Syne";
@@ -361,28 +363,30 @@ button {
 	font-size: 20px;
 }
 .gallery-modal {
+	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template: 100px / auto auto auto auto;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	margin-bottom: 40px;
 }
 .fa-trash-can {
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	cursor: pointer;
 	background-color: black;
 	color: white;
-	margin-left: -20px;
+	margin-left: -40px;
+	margin-top: 10px;
 }
 .fa-trash-alt:before, .fa-trash-can:before {
-    margin-top: 5px;
-	font-size: 10px;
+    margin-top: 8px;
+	font-size: 15px;
 }
 .gallery-modal img {
-	width: 50%;
+	width: 100%;
 	cursor: pointer;
+	height: 100%;
+	max-height: 100px;
 }
 .borderline::after {
 	display: flex;
@@ -391,16 +395,17 @@ button {
 	height: 1px;
 	width: 75%;
 	margin: 15px auto;
+	margin-top: 50px;
 }
 .fa-trash-can {
 	font-size: 15px;
 	display: flex;
 	justify-content: center;	
 }
-img-modal {
+figure {
 	display: flex;
 }
-img-modal:hover {
+figure:hover {
 	border:2px solid #1D6154;
 }
 /*modal "ajouter une photo"*/
@@ -423,16 +428,13 @@ img-modal:hover {
 	justify-content: center;
 	align-items: center;
 	background-color: #E8F1F7;
-	width: 500px;
-	height: 200px;
-	border-radius: 10px;
+	height: 275px;
 } 
 .formphoto i {
 	color: grey;
 	font-size: 90px;
 	font-weight: 100;
 	margin: 20px;
-	margin-top: -25px;
 }
 .formphoto label {
 	font-family: "work sans";
@@ -445,13 +447,19 @@ img-modal:hover {
 	color: #306685;
 	border-radius: 50px;
 	cursor: pointer;
-	margin-top: -10px;
+}
+.imgform {
+	width: 300px;
+	height: 150px;
+	margin-top: -130px;
+	margin-bottom: 20px;
 }
 .formphoto::after {
 	margin-top: 10px;
 	content: "jpg, png : 4mo max";
 	position: absolute;
-	top: 300px;
+	top: 375px;
+	margin-top: 20px;
 }
 .formphoto input {
 	display: none;
@@ -460,6 +468,14 @@ img-modal:hover {
 .visible {
 	opacity: 1;
 	pointer-events: auto;
+	overflow-y: auto;
+	overflow-x: hidden;	
+}
+.visible::-webkit-scrollbar {
+	width: 10px;	
+}
+.visible::-webkit-scrollbar-thumb {
+	background: #ccc;
 }
 .form-title {
 	display: flex;
@@ -481,7 +497,7 @@ img-modal:hover {
 }
 .form-title-category {
 	display: flex;
-	margin-top: 50px;
+	margin-top: 10px;
 	flex-direction: column;
 	align-items: center;
 }
@@ -504,7 +520,6 @@ img-modal:hover {
 .buttonvalider {
 	font-family:"Syne";
 	padding: 10px 20px;
-	margin: 0 15px;
 	border-radius: 25px;
 	background-color: grey;
 	color: white;
@@ -517,4 +532,18 @@ img-modal:hover {
 .buttonvalider-active {
 	color: white;
 	background-color: #1D6154;
+}
+.modale_header1 {
+	display: flex;
+	justify-content: flex-end;
+	width: 95%;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.modale_header2 {
+	display: flex;
+	justify-content: space-between;
+	width: 95%;
+	margin-top: 10px;
+	margin-bottom: 30px;
 }

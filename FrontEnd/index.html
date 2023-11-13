@@ -31,9 +31,9 @@
 </header>
 <main>
 	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
+		<div class="image-sophie">
+			<img src="./assets/images/sophie-bluel.png" alt="image de sophie">
+		</div>
 		<article>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
@@ -59,8 +59,8 @@
 	<!--Modal-->
 	<div class="overlay" id="overlay">
 		<div class="modal" id="modal">
-			<div class="modale_header">
-				<a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left" style="display: none;"></i></a>
+			<div class="modale_header1">
+
 				<a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a>
 			</div>
 			<h2 class="h2-modal">Galerie photo</h2>
@@ -70,6 +70,7 @@
 			<div class="borderline"></div>
 			<div class="buttonposition">
 				<button class="buttonphoto">Ajouter une photo</button>
+				<button class="btn-edition" id="btn-edition"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
 			</div>	
 		</div>
 	</div> 
@@ -78,26 +79,26 @@
 	<!--Modal "ajout photo"-->	
 	<div class="overlayphoto" id="overlayphoto">
 		<div class="modal" id="modalphoto">
-			<div class="modale_header">
-				<div class="left"><a href="index.html" class="icone_left "><i class="fa-solid fa-arrow-left"></i></a></div>
+			<div class="modale_header2">
+				<i class="fa-solid fa-arrow-left"></i>
 				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
 			</div>
 			<h2 class="h2-modal">Ajout photo</h2>
-
 			<div class="formphoto">
 				<i class="fa-regular fa-image"></i>
+				<img id="img-test" class="imgform" >
 				<label for="photo">+ Ajouter une photo</label>
-				<input type="file" name="photo" id="photo" class="photo">
+				<input type="file" name="photo" id="photo" class="photo" onchange="document.getElementById('img-test').src = window.URL.createObjectURL(this.files[0])">
 			</div>
 			<div class="form-title-category">
 				<div class="form-title">
 					<label for="titre" class="title-form">Titre</label>
 					<input class="input-title" type="text" name="titre" id="titre">
 				</div>
-
 				<div class="form-id">
 					<label for="categorie" class="title-form">Catégorie</label>
 					<select name="categorie" id="categorie" class="categorie">
+						<option value="0">...</option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="3">Hôtels & restaurants</option>
