@@ -10,10 +10,11 @@
 	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/style.ajouter.css">
 </head>
 <body>
 <div class="edition" style="display: none;">
-		<button class="btn-edition" id="btn-edition"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
+		<button class="btn-edition" ><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
 	</div>
 <header>
 	
@@ -60,7 +61,6 @@
 	<div class="overlay" id="overlay">
 		<div class="modal" id="modal">
 			<div class="modale_header1">
-
 				<a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a>
 			</div>
 			<h2 class="h2-modal">Galerie photo</h2>
@@ -69,8 +69,7 @@
 			</div>
 			<div class="borderline"></div>
 			<div class="buttonposition">
-				<button class="buttonphoto">Ajouter une photo</button>
-				<button class="btn-edition" id="btn-edition"><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
+				<button class="buttonphoto" id="btn-edition">Ajouter une photo</button>
 			</div>	
 		</div>
 	</div> 
@@ -80,7 +79,7 @@
 	<div class="overlayphoto" id="overlayphoto">
 		<div class="modal" id="modalphoto">
 			<div class="modale_header2">
-				<i class="fa-solid fa-arrow-left"></i>
+				<a href="index.html" class="icone_right"><i class="fa-solid fa-arrow-left"></i>
 				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
 			</div>
 			<h2 class="h2-modal">Ajout photo</h2>
@@ -88,7 +87,7 @@
 				<i class="fa-regular fa-image"></i>
 				<img id="img-test" class="imgform" >
 				<label for="photo">+ Ajouter une photo</label>
-				<input type="file" name="photo" id="photo" class="photo" onchange="document.getElementById('img-test').src = window.URL.createObjectURL(this.files[0])">
+				<input type="file" name="photo" id="photo" class="photo"accept="image/*" onchange="loadFile(event)">
 			</div>
 			<div class="form-title-category">
 				<div class="form-title">

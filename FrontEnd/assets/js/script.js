@@ -20,8 +20,9 @@ function affichagegallery(projects, idFiltre) {
     sectiongallery.innerHTML = '';
 
     projects.forEach((project) => {
-            //Récupération des projets //$
+            //Récupération des projets //
             const projectContainer = document.createElement('div');
+            projectContainer.setAttribute('id', 'project' + project.id)
 
             //Récupération de l'image //
             const image = document.createElement('img');
