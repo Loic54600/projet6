@@ -265,11 +265,13 @@ figure:hover {
 	color: red;
 }
 .imgform {
-	width: 300px;
+	width: 50%;
 	height: 150px;
 	margin-top: -130px;
 	margin-bottom: 20px;
 	border: none;
+	object-fit: cover;
+
 }
 .formphoto::after {
 	margin-top: 10px;

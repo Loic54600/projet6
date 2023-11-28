@@ -53,6 +53,25 @@ document.getElementById('btn-modal').addEventListener('click', function () {
     modalaffiche();
 });
 
+//Permet au click du bouton d'appeller la modal-photo //
+document.getElementById('btn-edition').addEventListener('click', function () {
+    document.getElementById('overlayphoto').classList.add('visible');
+    document.getElementById('modalphoto').classList.add('visible');
+});
+
+//Permet l'affichage des images lors de la selection dans la modal//
+const loadFile = function(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+      const output = document.getElementById('img-test');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+};
+
+
+//Partie Galerie//
+
 //Ajout de la galerie dans la modal//
 const sectiongallerymodal = document.querySelector(".gallery-modal");
 
@@ -89,7 +108,6 @@ function affichagegallerymodal(projectsmodal) {
         }
     );
 }
-
 
 //fonction affiche la gallery dans la modal//
 function modalaffiche() {
@@ -146,13 +164,6 @@ async function ajouterimage(event) {
         }
     }
 }
-
-//Permet au click du bouton d'appeller la modal-photo //
-document.getElementById('btn-edition').addEventListener('click', function () {
-    document.getElementById('overlayphoto').classList.add('visible');
-    document.getElementById('modalphoto').classList.add('visible');
-});
-
 //Fonction supprimer image//
 function supprimg(btnSuppr, id, modalObject) {
     const galleryProject = document.querySelector(`#project${id}`)
@@ -175,14 +186,3 @@ function supprimg(btnSuppr, id, modalObject) {
             })
     })
 }
-
-
-//Permet l'affichage des images lors de la selection dans la modal//
-    const loadFile = function(event) {
-    const reader = new FileReader();
-    reader.onload = function(){
-      const output = document.getElementById('img-test');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-};
