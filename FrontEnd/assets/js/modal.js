@@ -1,6 +1,6 @@
 //Variable récupération du token + class//
 const token = localStorage.getItem("token");
-const Codeco = document.querySelector(".codeco");
+const codeco = document.querySelector(".codeco");
 
 //Fonction changement de connexion en déconnexion//
 adminDeco();
@@ -13,7 +13,7 @@ function adminDeco() {
             //change le texte//
             a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
-            Codeco.innerHTML = "deconnexion";
+            codeco.innerHTML = "Logout";
         }
     });
 }
@@ -27,6 +27,8 @@ function modifier() {
             return;
         } else {
             //enleve le style display none//
+            const filters = document.querySelector('.filters');
+            filters.style.display = 'none'
             a.removeAttribute("style");
         }
     });
@@ -49,28 +51,8 @@ function edition() {
 //Permet au click du bouton d'appeller la modal //
 document.getElementById('btn-modal').addEventListener('click', function () {
     document.getElementById('overlay').classList.add('visible');
-    document.getElementById('modal').classList.add('visible');
     modalaffiche();
 });
-
-//Permet au click du bouton d'appeller la modal-photo //
-document.getElementById('btn-edition').addEventListener('click', function () {
-    document.getElementById('overlayphoto').classList.add('visible');
-    document.getElementById('modalphoto').classList.add('visible');
-});
-
-//Permet l'affichage des images lors de la selection dans la modal//
-const loadFile = function(event) {
-    const reader = new FileReader();
-    reader.onload = function(){
-      const output = document.getElementById('img-test');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-};
-
-
-//Partie Galerie//
 
 //Ajout de la galerie dans la modal//
 const sectiongallerymodal = document.querySelector(".gallery-modal");
@@ -84,30 +66,43 @@ function affichagegallerymodal(projectsmodal) {
     if (projectsmodal !== null) {
         projectsmodal = projectsmodal.filter(projectsmodal => projectsmodal.categoryId);
     }
-//placement dans la div gallery //
+    //placement dans la div gallery //
     sectiongallerymodal.innerHTML = '';
 
     projectsmodal.forEach((project) => {
-            //Récupération des projets //
-            const projectContainermodal = document.createElement('figure');
+        //Récupération des projets //
+        const projectContainermodal = document.createElement('figure');
 
-            //Récupération de l'image //
-            const image = document.createElement('img');
-            image.src = project.imageUrl;
-            //descriptif de l'image//
-            image.setAttribute('alt', project.title);
-            projectContainermodal.appendChild(image);
+        //Récupération de l'image //
+        const image = document.createElement('img');
+        image.src = project.imageUrl;
+        //descriptif de l'image//
+        image.setAttribute('alt', project.title);
+        projectContainermodal.appendChild(image);
 
-            const icon = document.createElement("span");
-            icon.classList.add("fa-solid", "fa-trash-can");
-            projectContainermodal.appendChild(icon);
-            supprimg(icon, project.id, projectContainermodal)
+        const icon = document.createElement("span");
+        icon.classList.add("fa-solid", "fa-trash-can");
+        projectContainermodal.appendChild(icon);
+        supprimg(icon, project.id, projectContainermodal)
 
-            //Renvoie les données dans la gallery//
-            sectiongallerymodal.appendChild(projectContainermodal);
-        }
-    );
+        //Renvoie les données dans la gallery//
+        sectiongallerymodal.appendChild(projectContainermodal);
+    });
+
+    //Permet au click du bouton d'appeller la modal-photo //
+    document.getElementById('btn-edition').addEventListener('click', function () {
+        document.getElementById('overlay').classList.remove('visible');
+        document.getElementById('overlayphoto').classList.add('visible');
+
+        const backBtn =  document.querySelector('.back_modal');
+        backBtn.addEventListener('click', ()=> {
+            document.getElementById('overlayphoto').classList.remove('visible');
+            document.getElementById('overlay').classList.add('visible');
+            resetAddForm();
+        })
+    });
 }
+
 
 //fonction affiche la gallery dans la modal//
 function modalaffiche() {
@@ -123,26 +118,25 @@ buttonvalider.addEventListener("click", ajouterimage);
 async function ajouterimage(event) {
     event.preventDefault();
 
-    const image = document.querySelector(".photo").files[0];
-    const title = document.querySelector(".input-title").value;
-    const categoryId = document.querySelector(".categorie").value;
-    //si aucune information "alert" de remplissage des champs//
-    if (title === "" || categoryId === "" || image === undefined) {
+    const image = document.querySelector(".photo");
+    const title = document.querySelector(".input-title");
+    const categoryId = document.querySelector(".categorie");
+    //si aucune information "alert" de remplissage des champs//``
+    if (title.value === "" || categoryId.value === "" || image.value === '') {
         alert("Remplissez tous les champs");
         return;
     }
     //Sinon si aucune catégorie choissie "alert" remplissage de catégorie//
-    else if (categoryId !== "1" && categoryId !== "2" && categoryId !== "3") {
+    else if (categoryId.value !== "1" && categoryId.value !== "2" && categoryId.value !== "3") {
         alert("Choisissez une catégorie valide");
         return;
     } else {
-
         try {
             //variable creation du formulaire image//
             const formData = new FormData();
-            formData.append("title", title);
-            formData.append("category", categoryId);
-            formData.append("image", image);
+            formData.append("title", title.value);
+            formData.append("category", categoryId.value);
+            formData.append("image", image.files[0]);
             //Envoie les données du formulaire dans le local//
             const response = await fetch("http://localhost:5678/api/works", {
                 method: "POST",
@@ -153,17 +147,17 @@ async function ajouterimage(event) {
             });
             //Si le formulaire est correct ajout du projet//
             if (response.status === 201) {
-                alert("Projet ajouté avec succés");
-                modaleProjets(dataAdmin);
-                backToModale(event);
-                generationProjets(data, null);
-
+                // FERME LA MODALE
+                document.getElementById('overlayphoto').classList.remove('visible');
+                resetAddForm()
+                changeId();
             }
         } catch (error) {
             console.log(error);
         }
     }
 }
+
 //Fonction supprimer image//
 function supprimg(btnSuppr, id, modalObject) {
     const galleryProject = document.querySelector(`#project${id}`)
@@ -185,4 +179,40 @@ function supprimg(btnSuppr, id, modalObject) {
                 console.log(error)
             })
     })
+}
+
+function loadFile(event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+        const output = document.querySelector('.imgform');
+        output.style.display = "block"
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+const closeModalBtns = document.querySelectorAll('.close_modal');
+closeModalBtns.forEach((closeModalBtn)=> {
+    closeModalBtn.addEventListener('click', (e)=> {
+        const modal = e.currentTarget.closest('.modal_container');
+        hideModal(modal)
+    })
+})
+
+function hideModal(modal) {
+    modal.classList.remove('visible');
+    resetAddForm();
+}
+
+function resetAddForm() {
+    const image = document.querySelector(".photo");
+    const title = document.querySelector(".input-title");
+    const categoryId = document.querySelector(".categorie");
+    
+    image.value = '';
+    title.value = ''
+    categoryId.selectedIndex = 0;
+    const preview =   document.querySelector('.imgform')
+    preview.src = '';
+    preview.style.display = 'none' 
 }

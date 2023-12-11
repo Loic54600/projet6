@@ -17,6 +17,7 @@
 		<button class="btn-edition" ><i class="fa-solid fa-pen-to-square icone"></i>Modifier</button>
 	</div>
 <header>
+	
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
@@ -57,10 +58,10 @@
 		</div>
 	</section>
 	<!--Modal-->
-	<div class="overlay" id="overlay">
+	<div class="overlay modal_container" id="overlay">
 		<div class="modal" id="modal">
 			<div class="modale_header1">
-				<a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a>
+				<span class="icone_right close_modal"><i class="fa-solid fa-xmark"></i></pan>
 			</div>
 			<h2 class="h2-modal">Galerie photo</h2>
 			<div class="gallery-modal">
@@ -75,18 +76,19 @@
 	<!--Fin modal-->
 
 	<!--Modal "ajout photo"-->	
-	<div class="overlayphoto" id="overlayphoto">
+	<div class="overlayphoto modal_container" id="overlayphoto">
 		<div class="modal" id="modalphoto">
 			<div class="modale_header2">
-				<a href="index.html" class="icone_right"><i class="fa-solid fa-arrow-left"></i>
-				<div class="right"><a href="index.html" class="icone_right"><i class="fa-solid fa-xmark"></i></a></div>
+				<span class="icone_right back_modal"><i class="fa-solid fa-arrow-left"></i></span>
+				<div class="right"><span class=" close_modal icone_right"><i class="fa-solid fa-xmark"></i></span>
+				</div>
 			</div>
 			<h2 class="h2-modal">Ajout photo</h2>
 			<div class="formphoto">
 				<i class="fa-regular fa-image"></i>
 				<img id="img-test" class="imgform" >
 				<label for="photo">+ Ajouter une photo</label>
-				<input type="file" name="photo" id="photo" class="photo"accept="image/*" onchange="loadFile(event)">
+				<input type="file" name="photo" id="photo" class="photo" accept="image/*" onchange="loadFile(event)">
 			</div>
 			<div class="form-title-category">
 				<div class="form-title">

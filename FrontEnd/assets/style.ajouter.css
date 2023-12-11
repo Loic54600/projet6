@@ -5,6 +5,9 @@
 	background-color: black;
 	width: 100%;
 	height: 30px;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 .btn-edition {
 	background-color: black;
@@ -28,8 +31,7 @@ a {
 }
 .filter_btn {
 	font-family: "Syne";
-	padding: 10px 20px;
-	margin: 0 15px;
+	padding: 9px 20px;
 	border: 1px solid #1D6154;
 	border-radius: 25px;
 	color: #1D6154;
@@ -46,6 +48,7 @@ a {
 .filters {
 	display: flex;
 	justify-content: center;
+	gap: 10px;
 	margin: 30px;
 }
 /*Partie login => mdp oublié*/
@@ -70,6 +73,12 @@ a {
 .btn-modal:hover {
 	color: red;
 }
+
+.back_modal,
+.close_modal {
+	cursor: pointer;
+}
+
 /*Bouton Modal "Modifier"*/
 .icone {
 	font-size: 20px;
@@ -81,9 +90,6 @@ button {
 } 
 /*Modal*/
 .modal {
-	justify-content: center;
-	pointer-events: none;
-	opacity: 0;
 	transition: opacity 0.3s;
 	position: fixed;
 	top: 10px;
@@ -181,25 +187,21 @@ button {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-.fa-trash-can {
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
-	background-color: black;
-	color: white;
-	margin-left: -35px;
-	margin-top: 20px;
+
+.fa-trash-alt:before,
+ .fa-trash-can:before {
+	font-size: 10px;
 }
-.fa-trash-alt:before, .fa-trash-can:before {
-    margin-top: 8px;
-	font-size: 15px;
+
+.gallery-modal figure {
+	position: relative;
 }
+
 .gallery-modal img {
-	width: 100%;
+	width: 80px;
 	cursor: pointer;
-	height: 100%;
-	max-height: 100px;
-	margin-top: 15px;
+	height: 105px;
+	object-fit: cover;
 }
 .borderline::after {
 	display: flex;
@@ -211,12 +213,23 @@ button {
 	margin-top: 50px;
 }
 .fa-trash-can {
-	font-size: 15px;
+	font-size: 10px;
 	display: flex;
-	justify-content: center;	
+	justify-content: center;
+	align-items: center;
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	border-radius: 2px;
 }
 figure {
 	display: flex;
+	border:2px solid transparent;
 }
 figure:hover {
 	border:2px solid #1D6154;
@@ -265,13 +278,12 @@ figure:hover {
 	color: red;
 }
 .imgform {
-	width: 50%;
+	width: 300px;
 	height: 150px;
 	margin-top: -130px;
 	margin-bottom: 20px;
 	border: none;
-	object-fit: cover;
-
+	display: none;
 }
 .formphoto::after {
 	margin-top: 10px;
